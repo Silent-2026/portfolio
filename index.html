@@ -3,129 +3,238 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Roblox Studded Portfolio</title>
+  <title>Roblox Studio Portfolio</title>
   <style>
+    :root {
+      --light-x: 50%;
+      --light-y: 20%;
+      --bg-x: 0px;
+      --bg-y: 0px;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #111;
+      background: #1b1b1b;
       color: #fff;
-      overflow-x: hidden;
+      overflow: hidden;
     }
 
-    .header {
-      text-align: center;
-      padding: 40px 20px;
-      background: linear-gradient(135deg, #222, #000);
-      border-bottom: 4px solid #555;
+    /* ROBLOX STUDIO TOP BAR */
+    .topbar {
+      height: 42px;
+      background: #2b2b2b;
+      border-bottom: 1px solid #444;
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      font-size: 13px;
+      letter-spacing: 0.5px;
     }
 
-    .header h1 {
-      font-size: 42px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+    .topbar span {
+      margin-right: 18px;
+      color: #ccc;
+      cursor: pointer;
     }
 
-    .header p {
+    .layout {
+      display: flex;
+      height: calc(100vh - 42px);
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      width: 220px;
+      background: #222;
+      border-right: 1px solid #444;
+      padding: 10px;
+    }
+
+    .sidebar h3 {
+      font-size: 13px;
       color: #aaa;
+      margin-bottom: 10px;
     }
 
+    .sidebar div {
+      padding: 8px;
+      background: #2c2c2c;
+      margin-bottom: 6px;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    /* MAIN AREA */
+    .main {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* STUDDED BASEPLATE WITH PARALLAX */
     .studs {
-      background-image: radial-gradient(circle, #444 2px, transparent 2px);
-      background-size: 20px 20px;
-      padding: 30px;
+      position: absolute;
+      width: 120%;
+      height: 120%;
+      left: -10%;
+      top: -10%;
+
+      background-image: url("https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/original/5X/c/b/2/9/cb293d819c45f471372ce6abe9975205ffff063b.png");
+      background-size: 140px 140px;
+      background-repeat: repeat;
+
+      transform: translate(var(--bg-x), var(--bg-y));
+      transition: transform 0.05s linear;
+
+      filter: brightness(0.9) contrast(1.1);
+    }
+
+    /* LIGHT OVERLAY THAT FOLLOWS MOUSE */
+    .light {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: radial-gradient(
+        circle at var(--light-x) var(--light-y),
+        rgba(255,255,255,0.18),
+        rgba(0,0,0,0.75)
+      );
+      mix-blend-mode: overlay;
+    }
+
+    /* CONTENT WINDOW (Roblox Studio style) */
+    .window {
+      position: relative;
+      margin: 30px;
+      background: #2a2a2a;
+      border: 1px solid #444;
+      border-radius: 6px;
+      padding: 20px;
+      max-width: 900px;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      max-width: 1100px;
-      margin: auto;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
     }
 
     .card {
-      background: #1a1a1a;
-      border: 2px solid #555;
-      border-radius: 10px;
+      background: #1f1f1f;
+      border: 1px solid #444;
+      border-radius: 6px;
       overflow: hidden;
-      box-shadow: 0 0 10px rgba(255,255,255,0.05);
-      transition: transform 0.2s ease;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
 
     .card:hover {
-      transform: scale(1.03);
+      transform: translateY(-4px);
+      box-shadow: 0 0 15px rgba(255,255,255,0.08);
     }
 
     .thumb {
       width: 100%;
-      height: 160px;
+      height: 140px;
       object-fit: cover;
       background: #333;
     }
 
     .content {
-      padding: 15px;
+      padding: 10px;
+      font-size: 12px;
+      color: #ccc;
     }
 
-    .content h3 {
-      margin: 0 0 10px;
-      font-size: 18px;
-    }
-
-    .content p {
+    .content h4 {
+      margin: 0 0 6px;
       font-size: 14px;
-      color: #bbb;
-    }
-
-    .footer {
-      text-align: center;
-      padding: 20px;
-      color: #666;
-      border-top: 1px solid #333;
+      color: #fff;
     }
   </style>
 </head>
 <body>
 
-  <div class="header">
-    <h1>My Roblox Portfolio</h1>
-    <p>Studded Style Showcase</p>
+  <div class="topbar">
+    <span>Home</span>
+    <span>Projects</span>
+    <span>Studio</span>
+    <span>Settings</span>
   </div>
 
-  <div class="studs">
-    <div class="grid">
+  <div class="layout">
 
-      <div class="card">
-        <img class="thumb" src="Thumb1.jpg" alt="Project 1" />
-        <div class="content">
-          <h3>Build Project 1</h3>
-          <p>A Roblox studded terrain build with custom lighting.</p>
-        </div>
-      </div>
+    <div class="sidebar">
+      <h3>Explorer</h3>
+      <div>Workspace</div>
+      <div>Lighting</div>
+      <div>StarterGui</div>
+      <div>ReplicatedStorage</div>
+      <div>ServerScriptService</div>
+    </div>
 
-      <div class="card">
-        <img class="thumb" src="Thumb2.jpg" alt="Project 2" />
-        <div class="content">
-          <h3>Build Project 2</h3>
-          <p>Obby map featuring stud-style obstacles and traps.</p>
-        </div>
-      </div>
+    <div class="main">
+      <div class="studs"></div>
+      <div class="light"></div>
 
-      <div class="card">
-        <img class="thumb" src="Thumb3.jpg" alt="Project 3" />
-        <div class="content">
-          <h3>Build Project 3</h3>
-          <p>Classic Roblox studded baseplate redesign with neon accents.</p>
+      <div class="window">
+        <h2>My Roblox Portfolio</h2>
+        <p style="color:#aaa;font-size:13px">Studded Studio Environment</p>
+
+        <div class="grid">
+
+          <div class="card">
+            <img class="thumb" src="Thumb1.jpg" />
+            <div class="content">
+              <h4>Project One</h4>
+              <div>Terrain build with lighting system</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <img class="thumb" src="Thumb2.jpg" />
+            <div class="content">
+              <h4>Project Two</h4>
+              <div>Obby with classic stud design</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <img class="thumb" src="Thumb3.jpg" />
+            <div class="content">
+              <h4>Project Three</h4>
+              <div>Retro baseplate remake</div>
+            </div>
+          </div>
+
         </div>
       </div>
 
     </div>
   </div>
 
-  <div class="footer">
-    © 2026 Roblox Portfolio - Studded Theme
-  </div>
+<script>
+  const studs = document.querySelector('.studs');
+  const light = document.querySelector('.light');
+
+  document.addEventListener('mousemove', (e) => {
+    const x = (e.clientX / window.innerWidth) * 100;
+    const y = (e.clientY / window.innerHeight) * 100;
+
+    // light follows mouse
+    document.documentElement.style.setProperty('--light-x', x + '%');
+    document.documentElement.style.setProperty('--light-y', y + '%');
+
+    // parallax movement
+    const moveX = (e.clientX - window.innerWidth / 2) * 0.02;
+    const moveY = (e.clientY - window.innerHeight / 2) * 0.02;
+
+    document.documentElement.style.setProperty('--bg-x', moveX + 'px');
+    document.documentElement.style.setProperty('--bg-y', moveY + 'px');
+  });
+</script>
 
 </body>
 </html>
