@@ -11,16 +11,15 @@
   --my: 50%;
 }
 
-/* GLOBAL */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   color: white;
   overflow-x: hidden;
-  background: #007800; /* NEW BG */
+  background: #007800;
 }
 
-/* STUDDED BACKGROUND */
+/* STUD BACKGROUND */
 .background {
   position: fixed;
   inset: 0;
@@ -31,7 +30,7 @@ body {
   z-index: -2;
 }
 
-/* LIGHT EFFECT */
+/* LIGHT */
 .light {
   position: fixed;
   inset: 0;
@@ -42,40 +41,38 @@ body {
   z-index: -1;
 }
 
-/* GLASS PANEL */
-.panel {
-  background: rgba(15, 15, 15, 0.75);
-  border: 1px solid rgba(255,255,255,0.08);
-  backdrop-filter: blur(6px);
-  border-radius: 12px;
-  padding: 20px;
-  margin: 20px auto;
-  max-width: 1000px;
-}
-
 /* NAV */
 .nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(0,0,0,0.4);
-  backdrop-filter: blur(6px);
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(8px);
   padding: 12px;
   display: flex;
   justify-content: center;
   gap: 25px;
   border-bottom: 1px solid rgba(255,255,255,0.1);
+  z-index: 10;
 }
 
 .nav a {
   color: #ddd;
   text-decoration: none;
+  font-size: 14px;
+}
+
+/* MAIN LAYOUT */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 100px 20px;
 }
 
 /* HERO */
 .hero {
   text-align: center;
-  padding: 100px 20px 40px;
+  margin-bottom: 60px;
 }
 
 .hero h1 {
@@ -84,7 +81,13 @@ body {
 }
 
 .hero p {
-  color: #ccc;
+  color: #ddd;
+}
+
+/* SECTIONS */
+h2 {
+  margin-top: 60px;
+  margin-bottom: 20px;
 }
 
 /* GRID */
@@ -96,9 +99,9 @@ body {
 
 /* CARD */
 .card {
-  background: rgba(25,25,25,0.9);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 10px;
+  background: rgba(20,20,20,0.85);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
   overflow: hidden;
   transition: 0.2s;
 }
@@ -134,57 +137,61 @@ body {
   <a href="#about">About</a>
 </div>
 
-<div class="hero panel">
-  <h1>My Roblox Portfolio</h1>
-  <p>Stud builds • Game design • Roblox creations</p>
-</div>
+<div class="container">
 
-<div id="projects" class="panel">
-  <h2>Projects</h2>
-
-  <div class="grid">
-
-    <div class="card">
-      <img src="Thumb1.jpg">
-      <div class="content">
-        <h3>Stud Terrain World</h3>
-        <p>Classic Roblox baseplate environment.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="Thumb2.jpg">
-      <div class="content">
-        <h3>Obby System</h3>
-        <p>Stud obstacle course with mechanics.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="Thumb3.jpg">
-      <div class="content">
-        <h3>Retro Baseplate</h3>
-        <p>Old Roblox aesthetic remake.</p>
-      </div>
-    </div>
-
+  <div class="hero">
+    <h1>My Roblox Portfolio</h1>
+    <p>Stud builds • Game design • Roblox creations</p>
   </div>
-</div>
 
-<div id="about" class="panel">
-  <h2>About Me</h2>
-  <p>
-    Roblox builder focused on stud-style environments, lighting, and immersive gameplay design.
-  </p>
+  <div id="projects">
+    <h2>Projects</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <img src="Thumb1.jpg">
+        <div class="content">
+          <h3>Stud Terrain World</h3>
+          <p>Classic Roblox baseplate environment.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="Thumb2.jpg">
+        <div class="content">
+          <h3>Obby System</h3>
+          <p>Stud obstacle course with mechanics.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="Thumb3.jpg">
+        <div class="content">
+          <h3>Retro Baseplate</h3>
+          <p>Old Roblox aesthetic remake.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="about">
+    <h2>About Me</h2>
+    <p style="color:#ddd;">
+      Roblox builder focused on stud-style environments, lighting, and immersive gameplay design.
+    </p>
+  </div>
+
 </div>
 
 <script>
 document.addEventListener("mousemove", (e) => {
-  const x = e.clientX / window.innerWidth;
-  const y = e.clientY / window.innerHeight;
+  const x = (e.clientX / window.innerWidth) * 100;
+  const y = (e.clientY / window.innerHeight) * 100;
 
-  document.documentElement.style.setProperty("--mx", (x * 100) + "%");
-  document.documentElement.style.setProperty("--my", (y * 100) + "%");
+  document.documentElement.style.setProperty("--mx", x + "%");
+  document.documentElement.style.setProperty("--my", y + "%");
 });
 </script>
 
