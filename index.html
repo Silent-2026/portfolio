@@ -6,159 +6,263 @@
 <title>Roblox Portfolio</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    background: #7a7a7a;
-    color: white;
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:url("studded.png") repeat;
+    color:#000;
 }
 
-/* Classic Studded Pattern */
-.studded {
-    background-image:
-        radial-gradient(circle at 15px 15px, #bfbfbf 4px, transparent 5px),
-        radial-gradient(circle at 45px 45px, #bfbfbf 4px, transparent 5px);
-    background-size: 60px 60px;
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
 }
 
-header {
-    padding: 40px;
-    text-align: center;
-    border-bottom: 4px solid #555;
+/* Header */
+
+.header{
+    margin-top:25px;
+    background:#d9d9d9;
+    border:4px solid #000;
+    box-shadow:8px 8px 0 #000;
+    padding:25px;
+    display:flex;
+    align-items:center;
+    gap:20px;
 }
 
-header h1 {
-    font-size: 3rem;
-    color: #fff;
-    text-shadow: 3px 3px 0 #333;
+.avatar{
+    width:120px;
+    height:120px;
+    border:3px solid #000;
+    image-rendering:pixelated;
+    object-fit:cover;
 }
 
-header p {
-    margin-top: 10px;
-    color: #ddd;
+.header h1{
+    font-size:42px;
 }
 
-.section {
-    max-width: 1200px;
-    margin: auto;
-    padding: 50px 20px;
+.header p{
+    font-size:18px;
+    margin-top:5px;
 }
 
-.section-title {
-    font-size: 2rem;
-    margin-bottom: 25px;
-    text-shadow: 2px 2px #333;
+/* About */
+
+.about{
+    margin-top:25px;
+    background:#d9d9d9;
+    border:4px solid #000;
+    box-shadow:8px 8px 0 #000;
+    padding:25px;
 }
 
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+.about h2{
+    margin-bottom:10px;
 }
 
-.card {
-    background: #5f5f5f;
-    border: 4px solid #3d3d3d;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: 0.25s;
+/* Projects */
+
+.projects{
+    margin-top:25px;
 }
 
-.card:hover {
-    transform: translateY(-5px);
+.projects h2{
+    margin-bottom:20px;
+    font-size:32px;
+    text-shadow:2px 2px #fff;
 }
 
-.card img {
-    width: 100%;
-    display: block;
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
 }
 
-.card-content {
-    padding: 15px;
+.card{
+    background:#d9d9d9;
+    border:4px solid #000;
+    box-shadow:8px 8px 0 #000;
+    overflow:hidden;
+    transition:.15s;
 }
 
-.card-content h3 {
-    margin-bottom: 10px;
+.card:hover{
+    transform:translate(-4px,-4px);
+    box-shadow:12px 12px 0 #000;
 }
 
-.btn {
-    display: inline-block;
-    margin-top: 10px;
-    background: #00a2ff;
-    color: white;
-    padding: 10px 18px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
+.card img{
+    width:100%;
+    display:block;
 }
 
-footer {
-    text-align: center;
-    padding: 30px;
-    border-top: 4px solid #555;
+.card-content{
+    padding:15px;
+}
+
+.card-content h3{
+    margin-bottom:8px;
+}
+
+.card-content p{
+    margin-bottom:15px;
+}
+
+.button{
+    display:inline-block;
+    background:#00A2FF;
+    color:white;
+    text-decoration:none;
+    padding:10px 18px;
+    border:2px solid #000;
+    font-weight:bold;
+}
+
+.button:hover{
+    filter:brightness(110%);
+}
+
+/* Skills */
+
+.skills{
+    margin-top:25px;
+    background:#d9d9d9;
+    border:4px solid #000;
+    box-shadow:8px 8px 0 #000;
+    padding:25px;
+}
+
+.skill-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:15px;
+}
+
+.skill{
+    background:white;
+    border:2px solid #000;
+    padding:8px 15px;
+    font-weight:bold;
+}
+
+/* Footer */
+
+.footer{
+    margin:25px 0;
+    text-align:center;
+    background:#d9d9d9;
+    border:4px solid #000;
+    box-shadow:8px 8px 0 #000;
+    padding:20px;
+}
+
+@media(max-width:700px){
+
+.header{
+    flex-direction:column;
+    text-align:center;
+}
+
+.header h1{
+    font-size:32px;
+}
+
 }
 </style>
 </head>
-
 <body>
 
-<header class="studded">
-    <h1>My Roblox Portfolio</h1>
-    <p>Builder • Scripter • UI Designer</p>
-</header>
+<div class="container">
 
-<section class="section">
-    <h2 class="section-title">Projects</h2>
+    <div class="header">
+        <img src="avatar.png" class="avatar" alt="Avatar">
 
-    <div class="gallery">
-
-        <div class="card">
-            <img src="Thumb1.png" alt="Project 1">
-            <div class="card-content">
-                <h3>Project One</h3>
-                <p>A Roblox experience built with classic studded aesthetics.</p>
-                <a href="#" class="btn">View Project</a>
-            </div>
+        <div>
+            <h1>Your Roblox Name</h1>
+            <p>Builder • Scripter • UI Designer</p>
         </div>
-
-        <div class="card">
-            <img src="Thumb2.png" alt="Project 2">
-            <div class="card-content">
-                <h3>Project Two</h3>
-                <p>Custom building showcase and scripting project.</p>
-                <a href="#" class="btn">View Project</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="Thumb3.png" alt="Project 3">
-            <div class="card-content">
-                <h3>Project Three</h3>
-                <p>Classic Roblox-inspired map and gameplay system.</p>
-                <a href="#" class="btn">View Project</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="Thumb4.png" alt="Project 4">
-            <div class="card-content">
-                <h3>Project Four</h3>
-                <p>UI and visual effects showcase.</p>
-                <a href="#" class="btn">View Project</a>
-            </div>
-        </div>
-
     </div>
-</section>
 
-<footer class="studded">
-    <p>© 2026 My Roblox Portfolio</p>
-</footer>
+    <div class="about">
+        <h2>About Me</h2>
+        <p>
+            Welcome to my Roblox portfolio. I create maps, systems,
+            UI designs, and custom experiences. Here are some of my
+            favorite projects.
+        </p>
+    </div>
+
+    <div class="projects">
+        <h2>Projects</h2>
+
+        <div class="grid">
+
+            <div class="card">
+                <img src="Thumb1.png" alt="Project 1">
+                <div class="card-content">
+                    <h3>Project One</h3>
+                    <p>Description of your project.</p>
+                    <a href="#" class="button">View</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Thumb2.png" alt="Project 2">
+                <div class="card-content">
+                    <h3>Project Two</h3>
+                    <p>Description of your project.</p>
+                    <a href="#" class="button">View</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Thumb3.png" alt="Project 3">
+                <div class="card-content">
+                    <h3>Project Three</h3>
+                    <p>Description of your project.</p>
+                    <a href="#" class="button">View</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Thumb4.png" alt="Project 4">
+                <div class="card-content">
+                    <h3>Project Four</h3>
+                    <p>Description of your project.</p>
+                    <a href="#" class="button">View</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="skills">
+        <h2>Skills</h2>
+
+        <div class="skill-list">
+            <div class="skill">Building</div>
+            <div class="skill">Modeling</div>
+            <div class="skill">Lua</div>
+            <div class="skill">UI Design</div>
+            <div class="skill">Animation</div>
+            <div class="skill">VFX</div>
+        </div>
+    </div>
+
+    <div class="footer">
+        © 2026 Your Roblox Name
+    </div>
+
+</div>
 
 </body>
 </html>
