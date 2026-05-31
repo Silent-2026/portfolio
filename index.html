@@ -6,40 +6,76 @@
 <title>Roblox Portfolio</title>
 
 <style>
+:root {
+  --mx: 50%;
+  --my: 50%;
+}
+
 /* GLOBAL */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   color: white;
   overflow-x: hidden;
+  background: #007800; /* NEW BG */
 }
 
-/* STUDDED BACKGROUND (REAL TEXTURE STYLE) */
+/* STUDDED BACKGROUND */
 .background {
   position: fixed;
   inset: 0;
   background-image: url("https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/original/5X/c/b/2/9/cb293d819c45f471372ce6abe9975205ffff063b.png");
-  background-size: 140px 140px;
-  filter: brightness(0.85);
-  transform: translate(var(--x), var(--y));
+  background-size: 160px 160px;
+  opacity: 0.35;
+  filter: brightness(0.6) contrast(1.1);
   z-index: -2;
 }
 
-/* LIGHT OVERLAY */
+/* LIGHT EFFECT */
 .light {
   position: fixed;
   inset: 0;
   background: radial-gradient(circle at var(--mx) var(--my),
-    rgba(255,255,255,0.18),
-    rgba(0,0,0,0.75));
-  mix-blend-mode: overlay;
+    rgba(255,255,255,0.10),
+    rgba(0,0,0,0.85));
+  pointer-events: none;
   z-index: -1;
+}
+
+/* GLASS PANEL */
+.panel {
+  background: rgba(15, 15, 15, 0.75);
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 1000px;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(6px);
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.nav a {
+  color: #ddd;
+  text-decoration: none;
 }
 
 /* HERO */
 .hero {
   text-align: center;
-  padding: 90px 20px 40px;
+  padding: 100px 20px 40px;
 }
 
 .hero h1 {
@@ -48,31 +84,20 @@ body {
 }
 
 .hero p {
-  color: #aaa;
-}
-
-/* SECTION */
-.section {
-  max-width: 1000px;
-  margin: auto;
-  padding: 40px 20px;
-}
-
-.section h2 {
-  margin-bottom: 20px;
+  color: #ccc;
 }
 
 /* GRID */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
 }
 
 /* CARD */
 .card {
-  background: rgba(30,30,30,0.9);
-  border: 1px solid #444;
+  background: rgba(25,25,25,0.9);
+  border: 1px solid rgba(255,255,255,0.1);
   border-radius: 10px;
   overflow: hidden;
   transition: 0.2s;
@@ -93,25 +118,7 @@ body {
 }
 
 .card h3 {
-  margin: 0 0 5px;
-}
-
-/* NAV */
-.nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: rgba(30,30,30,0.9);
-  padding: 12px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  border-bottom: 1px solid #444;
-}
-
-.nav a {
-  color: #ccc;
-  text-decoration: none;
+  margin: 0 0 6px;
 }
 </style>
 </head>
@@ -127,12 +134,12 @@ body {
   <a href="#about">About</a>
 </div>
 
-<div class="hero">
+<div class="hero panel">
   <h1>My Roblox Portfolio</h1>
-  <p>Studded builds • Game design • Roblox creations</p>
+  <p>Stud builds • Game design • Roblox creations</p>
 </div>
 
-<div class="section" id="projects">
+<div id="projects" class="panel">
   <h2>Projects</h2>
 
   <div class="grid">
@@ -141,7 +148,7 @@ body {
       <img src="Thumb1.jpg">
       <div class="content">
         <h3>Stud Terrain World</h3>
-        <p>Classic Roblox baseplate environment with lighting.</p>
+        <p>Classic Roblox baseplate environment.</p>
       </div>
     </div>
 
@@ -149,7 +156,7 @@ body {
       <img src="Thumb2.jpg">
       <div class="content">
         <h3>Obby System</h3>
-        <p>Stud-based obstacle course with traps & moving parts.</p>
+        <p>Stud obstacle course with mechanics.</p>
       </div>
     </div>
 
@@ -157,31 +164,27 @@ body {
       <img src="Thumb3.jpg">
       <div class="content">
         <h3>Retro Baseplate</h3>
-        <p>Old Roblox aesthetic recreation with neon style.</p>
+        <p>Old Roblox aesthetic remake.</p>
       </div>
     </div>
 
   </div>
 </div>
 
-<div class="section" id="about">
+<div id="about" class="panel">
   <h2>About Me</h2>
-  <p style="color:#bbb;">
-    Roblox builder focused on stud-style environments, lighting, and gameplay design.
-    I create immersive Roblox experiences inspired by classic Studio aesthetics.
+  <p>
+    Roblox builder focused on stud-style environments, lighting, and immersive gameplay design.
   </p>
 </div>
 
 <script>
 document.addEventListener("mousemove", (e) => {
-  const x = (e.clientX - window.innerWidth/2) * 0.02;
-  const y = (e.clientY - window.innerHeight/2) * 0.02;
+  const x = e.clientX / window.innerWidth;
+  const y = e.clientY / window.innerHeight;
 
-  document.documentElement.style.setProperty("--x", x + "px");
-  document.documentElement.style.setProperty("--y", y + "px");
-
-  document.documentElement.style.setProperty("--mx", e.clientX + "px");
-  document.documentElement.style.setProperty("--my", e.clientY + "px");
+  document.documentElement.style.setProperty("--mx", (x * 100) + "%");
+  document.documentElement.style.setProperty("--my", (y * 100) + "%");
 });
 </script>
 
